@@ -8,25 +8,22 @@ Purpose / Features
 
 The full purpose and scope has yet tp be cleary defined but right now it does the folling:
  - Gets the base stem (singlaru) of any English word. Ex: "communities" => "community" (Porter Stemming Algorithm)
- - 
- 
+
 Todo
 =====
 
+ - Define a strict set of rules for language extensions.
+ - Create convenience methods. (get word type: noun, verb, etc;)
 
+Authors
+=====
+
+Brenden Ellingboe
 
 Credits
 =====
 
-Copyright
------
-
 (c) 2013 URentWise, LLC
-
-Authors
------
-
-Brenden Ellingboe
 
 PHP-NL makes use of the Porter Stemming Algorithm.
  - Written by Iain Argent for Complinet Ltd., 17/2/00
