@@ -6,8 +6,8 @@ PHP-NL is a work-in-progress natural language library for possible natural-langa
 Purpose / Features
 =====
 
-The full purpose and scope has yet tp be cleary defined but right now it does the folling:
- - Gets the base stem (singlaru) of any English word. Ex: "communities" => "community" (Porter Stemming Algorithm)
+The full purpose and scope has yet to be cleary defined but right now it does the following:
+ - Gets the base stem (singlar) of any English word. Ex: "communities" => "community" (Porter Stemming Algorithm)
 
 Todo
 =====
