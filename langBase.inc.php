@@ -47,20 +47,21 @@ abstract class phpnlLangBase implements nlInterface{
 		}
 	}
 	
-	public function setProperties($prop_array) {
+	public function setSearchFields($prop_array) {
 		if (is_array($prop_array) && count($prop_array) > 0) {
 			$this->properties = $prop_array;
 		} else {
-			throw new Exception("[phpNL]: ->setProperties() requires an array with an least 1 element.");
+			throw new Exception("[phpNL]: ->setSearchFields() requires an array with an least 1 element.");
 		}
 	}
 	
 	protected function run_attribute() {
 		$run_return = array();
 		foreach ($this->properties as $prop) {
-			$attr_search_pattern = "/\d+(?= $prop)/";
+			$prop_stem = $this->stem($prop);
+			$attr_search_pattern = "/\d+(?= ($prop|$prop_stem))/";
 			preg_match_all($attr_search_pattern, $this->nl_string, $matches);
-			$prop_arr = array("stem" => $this->stem($prop),
+			$prop_arr = array("stem" => $prop_stem,
 							  "value" => $matches[0][0]);
 			$run_return[$prop] = $prop_arr;
 		}

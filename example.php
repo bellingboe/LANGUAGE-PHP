@@ -16,7 +16,7 @@ $search = phpNL::newLanguage("en");
 // Set some properties
 $search->setSearchString($string);
 $search->setMode("attribute");
-$search->setProperties($config);
+$search->setSearchFields($config);
 
 // Return the result of the analyzer
 var_dump( $search->run() );
