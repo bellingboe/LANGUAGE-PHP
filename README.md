@@ -1,14 +1,14 @@
 PHP-NL
 ======
 
-PHP-NL is a work-in-progress natural language library for possible natural-langauge search.
+PHP-NL is a work-in-progress natural language library for possible natural-language search.
 
 Purpose / Features
 =====
 
-The full purpose and scope has yet to be cleary defined but right now it does the following:
- - Gets the base stem (singlar) of any English word. Ex: "communities" => "community" (Porter Stemming Algorithm)
- - Return the numerical value of any "object" supplied in ```->setProperties()``` (Attribute mode)
+The full purpose and scope has yet to be clearly defined but right now it does the following:
+ - Gets the base stem (singular) of any English word. Ex: "communities" => "community" (Porter Stemming Algorithm)
+ - Return the numerical value of any "object" supplied in ```->setSearchFields()``` (Attribute mode)
 
 Example
 =====
@@ -30,7 +30,7 @@ $search = phpNL::newLanguage("en");
 // Set some properties
 $search->setSearchString($string);
 $search->setMode("attribute");
-$search->setProperties($config);
+$search->setSearchFields($config);
 
 // Return the result of the analyzer
 var_dump( $search->run() );
@@ -58,7 +58,7 @@ Todo
   - Allow the matching of true natural writing by accepting the written out number vales. ("ten miles" vs "10 miles")
  - Improvements to Subject mode:
   - Needs to be implemented.
-  - Allow the retreieval of the who, what, where, when, etc of any given sentence.
+  - Allow the retrieval of the who, what, where, when, etc of any given sentence.
 
 Authors
 =====
