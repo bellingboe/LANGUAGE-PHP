@@ -34,6 +34,19 @@ $search->setProperties($config);
 
 // Return the result of the analyzer
 var_dump( $search->run() );
+
+/*
+result:
+array(1) {
+  ["miles"]=>
+  array(2) {
+    ["stem"]=>
+    string(4) "mile"
+    ["value"]=>
+    string(2) "10"
+  }
+}
+*/
 ```
 
 Todo
@@ -45,7 +58,7 @@ Todo
   - Allow the matching of true natural writing by accepting the written out number vales. ("ten miles" vs "10 miles")
  - Improvements to Subject mode:
   - Needs to be implemented.
-  - Allow the retreieval of the who, what, where, etc of any given sentence.
+  - Allow the retreieval of the who, what, where, when, etc of any given sentence.
 
 Authors
 =====
