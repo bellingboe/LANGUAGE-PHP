@@ -4,7 +4,7 @@ interface nlInterface {
 	function stem($word);
 	function setSearchString($str);
 	function setMode($mode);
-	function setProperties($prop_array);
+	function setSearchFields($prop_array);
 	function run();
 }
 
@@ -58,12 +58,20 @@ abstract class phpnlLangBase implements nlInterface{
 	protected function run_attribute() {
 		$run_return = array();
 		foreach ($this->properties as $prop) {
-			$prop_stem = $this->stem($prop);
-			$attr_search_pattern = "/\d+(?= ($prop|$prop_stem))/";
-			preg_match_all($attr_search_pattern, $this->nl_string, $matches);
-			$prop_arr = array("stem" => $prop_stem,
-							  "value" => $matches[0][0]);
-			$run_return[$prop] = $prop_arr;
+			if (is_array($prop)) {
+				$found = false;
+				$attr_search_pattern = "/(".$prop[key($prop)].")/i";
+				preg_match_all($attr_search_pattern, $this->nl_string, $matches);
+				$prop_arr = array("value" => $matches[0][0]);
+				$run_return[key($prop)] = $prop_arr;
+			} else {
+				$prop_stem = $this->stem($prop);
+				$attr_search_pattern = "/\d+(?= ($prop|$prop_stem))/";
+				preg_match_all($attr_search_pattern, $this->nl_string, $matches);
+				$prop_arr = array("stem" => $prop_stem,
+								  "value" => $matches[0][0]);
+				$run_return[$prop] = $prop_arr;
+			}
 		}
 		return $run_return;
 	}

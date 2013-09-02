@@ -18,13 +18,20 @@ require_once "langBase.inc.php";
 require_once "enLang.inc.php";
 // require any other language extensions here
 
-// We want to get the value of miles
-$config = array("miles");
+// ->setSearchFields() takes an array of attributes to look up in the phrase.
+// You can supply the singular value or plural. It will match both.
+$config = array("miles"); // "miles" will also match "mile"
+
+// You can also look for a value with no inherent
+// attribute by specifying 1 or more options to match.
+$config[] = array("action" => "ran|jumped|skipped|hopped");
+$config[] = array("when" => "today|tomorrow|yesterday");
+$config[] = array("who" => "he|she");
 
 // The string we want to analyze
 $string = "He ran 10 miles today";
 
-// Create the new English language analyzer
+// create the new English language analyzer
 $search = phpNL::newLanguage("en");
 
 // Set some properties
@@ -37,13 +44,29 @@ var_dump( $search->run() );
 
 /*
 result:
-array(1) {
+
+array(4) {
   ["miles"]=>
   array(2) {
     ["stem"]=>
     string(4) "mile"
     ["value"]=>
     string(2) "10"
+  }
+  ["action"]=>
+  array(1) {
+    ["value"]=>
+    string(3) "ran"
+  }
+  ["when"]=>
+  array(1) {
+    ["value"]=>
+    string(5) "today"
+  }
+  ["who"]=>
+  array(1) {
+    ["value"]=>
+    string(2) "He"
   }
 }
 */
